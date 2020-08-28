@@ -30,19 +30,26 @@
                 </form>
             </div>
             <div class="lg:w-1/2 lg:pl-10">
-                @if(Session::has('success'))
-                    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
-                        <p class="font-bold">Success!</p>
-                        <p>{{ Session::get('success') }}</p>
+                @if(Session::has('warning'))
+                    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 mb-6" role="alert">
+                        <p class="font-bold">Attention!</p>
+                        <p>{{ Session::get('warning') }}</p>
                     </div>
-                    @foreach(Session::get('appointments') as $appointment)
-                        <div class="mb-3">
-                            <p>Date: {{ $appointment->start_date }}</p>
-                            <p>Start time: {{ $appointment->start_time }}</p>
-                            <p>Specialty Name: {{ $appointment->specialty_name }}</p>
-                            <p>Status: {{ $appointment->status }}</p>
+                @else
+                    @if(Session::has('success'))
+                        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
+                            <p class="font-bold">Success!</p>
+                            <p>{{ Session::get('success') }}</p>
                         </div>
-                    @endforeach
+                        @foreach(Session::get('appointments') as $appointment)
+                            <div class="mb-3">
+                                <p>Date: {{ $appointment->start_date }}</p>
+                                <p>Start time: {{ $appointment->start_time }}</p>
+                                <p>Specialty Name: {{ $appointment->specialty_name }}</p>
+                                <p>Status: {{ $appointment->status }}</p>
+                            </div>
+                        @endforeach
+                    @endif
                 @endif
             </div>
         </div>

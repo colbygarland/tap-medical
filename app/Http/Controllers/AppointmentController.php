@@ -26,6 +26,9 @@ class AppointmentController extends Controller
         $appointments = Appointment::where('doctor_id', $request->doctor_id)
             ->where('start_date', $request->date)
             ->get();
+        if($appointments->isEmpty()){
+            Session::flash('warning', 'No appointments found.');
+        }
 
         Session::flash('appointments', $appointments);
         Session::flash('doctor_id', $request->doctor_id);
