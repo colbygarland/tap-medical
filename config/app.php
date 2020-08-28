@@ -229,6 +229,6 @@ return [
 
     ],
 
-    'api_endpoint' => env('API_ENDPOINT'),
+    'api_endpoint' => env('API_ENDPOINT', 'http://ch-api-test.herokuapp.com/'),
 
 ];
