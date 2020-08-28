@@ -20,10 +20,10 @@
     <link href="{{ mix('css/tailwind.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body class="bg-gray-200">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-md px-4 py-4">
+            <div class="container mx-auto">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -40,13 +40,13 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        
+
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 px-4">
             @yield('content')
         </main>
     </div>

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('appointments')->group(function(){
     Route::get('pull', 'AppointmentController@pull');
-    Route::post('get', 'AppointmentController@get');
+    Route::post('find', 'AppointmentController@find')->name('find_appointments');
 });
 
 Route::prefix('doctors')->group(function(){

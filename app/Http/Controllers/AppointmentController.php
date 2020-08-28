@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Appointment;
 use App\Http\Requests\GetAppointmentsRequest;
-use Illuminate\Http\JsonResponse;
+use Session;
 
 class AppointmentController extends Controller
 {
@@ -20,17 +20,16 @@ class AppointmentController extends Controller
      * Get a list of appointments filtered by doctor and date.
      *
      * @param GetAppointmentsRequest $request
-     * @return JsonResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function get(GetAppointmentsRequest $request){
+    public function find(GetAppointmentsRequest $request){
         $appointments = Appointment::where('doctor_id', $request->doctor_id)
-            ->where('created_at', $request->date)
+            ->where('start_date', $request->date)
             ->get();
 
-        $response = [
-            'message' => 'Appointments retrieved.',
-            'appointments' => $appointments,
-        ];
-        return response()->json($response);
+        Session::flash('appointments', $appointments);
+        Session::flash('doctor_id', $request->doctor_id);
+        Session::flash('date', $request->date);
+        return back()->with(['success' => 'Appointments retrieved.']);
     }
 }

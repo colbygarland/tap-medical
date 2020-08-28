@@ -39,7 +39,9 @@ class PullAppointments extends Command
      */
     public function handle()
     {
-        Appointment::clinicOne();
+        $this->info('Starting to refresh appointments..');
+        Appointment::refreshAppointments();
+        $this->info('Finished refreshing appointments.');
         return 0;
     }
 }
